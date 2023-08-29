@@ -1,10 +1,10 @@
-import { MyComponent } from "./MyComponent";
+import { header } from "./projectHeader";
 import "./App.css";
 
-function App() {
+function App(): JSX.Element {
     return (
         <div className="App">
-            <MyComponent />
+            <header />
         </div>
     );
 }
