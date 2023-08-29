@@ -1,3 +1,3 @@
-export function header(): JSX.Element {
-    return <div>Hello from Ho Kei and Laura</div>;
+export default function Header(): JSX.Element {
+    return <h1>Welcome to Ho Kei and Laura paste bin app</h1>;
 }
