@@ -18,7 +18,7 @@ function App(): JSX.Element {
             // );
 
             const submits = reponse.data;
-            setRecentSubmits(submits.msg);
+            setRecentSubmits(submits[0].title);
             console.log(submits);
             console.log("fetched all recentSubmits");
         } catch (err) {
@@ -28,7 +28,7 @@ function App(): JSX.Element {
 
     useEffect(() => {
         // populate data on first load
-        fetchAllSubmit("/");
+        fetchAllSubmit("/pastes");
     }, []);
 
     return (
