@@ -1,4 +1,5 @@
 export interface DataProps {
+    id?: number;
     title: string;
     body: string;
 }
@@ -17,17 +18,9 @@ export function InputArea({
     setInputTitle,
     inputBody,
     setInputBody,
-    newSubmit,
-    setNewSubmit,
-}: SubmitStateprops): JSX.Element {
-    function handleSubmit() {
-        if (inputTitle.length === 0 || inputBody.length === 0) {
-            console.error("Title and Body cant be empty.");
-        } else {
-            setNewSubmit({ title: inputTitle, body: inputBody });
-            console.log(newSubmit?.title);
-        }
-    }
+}: // newSubmit,
+// setNewSubmit,
+SubmitStateprops): JSX.Element {
     return (
         <div>
             <h2>Title: </h2>
@@ -49,7 +42,6 @@ export function InputArea({
                     setInputBody(event.target.value);
                 }}
             ></textarea>
-            <button onClick={handleSubmit}>Submit</button>
         </div>
     );
 }
