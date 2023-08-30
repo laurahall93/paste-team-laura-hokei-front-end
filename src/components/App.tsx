@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { baseUrl } from "../utils/baseUrl";
 import "./App.css";
+import { InputArea, DataProps } from "./inputArea";
 
 function App(): JSX.Element {
-    //on click submit button - should update
-    const [recentSubmits, setRecentSubmits] = useState("");
+    const [recentSubmitList, setRecentSubmitList] = useState("");
+    const [newSubmit, setNewSubmit] = useState<DataProps>();
+    const [inputTitle, setInputTitle] = useState("");
+    const [inputBody, setInputBody] = useState("");
 
     //firstload:
     async function fetchAllSubmit(endpoint: string) {
@@ -18,7 +21,7 @@ function App(): JSX.Element {
             // );
 
             const submits = reponse.data;
-            setRecentSubmits(submits[0].title);
+            setRecentSubmitList(submits[0].title);
             console.log(submits);
             console.log("fetched all recentSubmits");
         } catch (err) {
@@ -35,10 +38,15 @@ function App(): JSX.Element {
         <div className="App">
             <Header />
             <div>
-                <h2>Main body goes here</h2>
-                <h3>1- input area</h3>
-                <h3>2- List view</h3>
-                <div>{recentSubmits}</div>
+                <InputArea
+                    inputTitle={inputTitle}
+                    setInputTitle={setInputTitle}
+                    inputBody={inputBody}
+                    setInputBody={setInputBody}
+                    newSubmit={newSubmit}
+                    setNewSubmit={setNewSubmit}
+                />
+                <div>{recentSubmitList}</div>
             </div>
             <Footer />
         </div>
