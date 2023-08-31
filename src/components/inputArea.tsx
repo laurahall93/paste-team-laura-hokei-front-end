@@ -20,10 +20,11 @@ export function InputArea({
     setInputBody,
 }: SubmitStateprops): JSX.Element {
     return (
-        <div className="input-area">
-            <div className="input-area-title">
-                <h2>Title: </h2>
+        <div>
+            <div>
+                <h2 className="submit-area-title">Title: </h2>
                 <input
+                    className="submit-area-title-input"
                     type="text"
                     placeholder="Input title here..."
                     value={inputTitle}
@@ -32,12 +33,13 @@ export function InputArea({
                     }}
                 ></input>
             </div>
-            <div className="input-area-title">
-                <h2>Body: </h2>
+            <div>
+                <h2 className="submit-area-body">Summary: </h2>
                 <textarea
-                    placeholder="Input body here..."
-                    rows={20}
-                    cols={50}
+                    className="submit-area-body-textarea"
+                    placeholder="Input summary here..."
+                    rows={8}
+                    cols={60}
                     value={inputBody}
                     onChange={(event) => {
                         setInputBody(event.target.value);

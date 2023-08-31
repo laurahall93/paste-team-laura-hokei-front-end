@@ -7,15 +7,15 @@ export interface DataViewProps {
     submit: DataProps;
 }
 
-interface CommentProps {
-    id?: number;
-    pasteBinId?: number;
-    comment: string;
-}
+// interface CommentProps {
+//     id?: number;
+//     pasteBinId?: number;
+//     comment: string;
+// }
 
-interface CommentViewProps {
-    comment: CommentProps;
-}
+// interface CommentViewProps {
+//     comment: CommentProps;
+// }
 
 export function DispleyRecentListView(props: DataViewProps): JSX.Element {
     const [popupButton, setpopupButton] = useState<boolean>(false);
@@ -61,8 +61,8 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
     }
 
     return (
-        <div>
-            <div className="recent-submit-list">
+        <div className="submit">
+            <div className="recent-submit-content">
                 <h3>Title: {props.submit.title}</h3>
                 <h4>
                     Summary :{" "}
@@ -74,35 +74,35 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                     </button>
                 </h4>
             </div>
-            <div>
+
+            <div className="popup">
                 {popupButton === true ? (
-                    <div className="popup">
-                        Full summary:{" "}
+                    <div>
+                        <h3>Full summary: </h3>
                         <pre>
                             <code>{popup}</code>
                         </pre>
-                        <div className="view-comment">
-                            <button onClick={handleViewClick}>
-                                View comments
-                            </button>
-                            {viewButton === true ? (
-                                <div>
-                                    Comments:
-                                    {/* current state is temporary  */}
-                                    {showAllComments}
-                                    {/* {showAllComments.map(
-                                        (e) => e.comment.comment
-                                    )} */}
-                                </div>
-                            ) : (
-                                <div></div>
-                            )}
-                        </div>
+                        <button onClick={handleViewClick}>View comments</button>
                     </div>
                 ) : (
-                    <p> </p>
+                    <div></div>
                 )}
             </div>
+            <div className="view-comment">
+                {popupButton === true && viewButton === true ? (
+                    <div>
+                        <h3>Comments: </h3>
+                        {/* current state is temporary  */}
+                        {showAllComments}
+                        {/* {showAllComments.map(
+                            (e) => e.comment.comment
+                        )} */}
+                    </div>
+                ) : (
+                    <div></div>
+                )}
+            </div>
+            <hr className="breakline"></hr>
         </div>
     );
 }
