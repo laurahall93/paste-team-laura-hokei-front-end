@@ -8,7 +8,6 @@ export interface DataViewProps {
 }
 
 export function DispleyRecentListView(props: DataViewProps): JSX.Element {
-    //state for button default = false -> popup will not show, onclick = true ->popup shows
     const [popupButton, setpopupButton] = useState<boolean>(false);
     const [popup, setPopup] = useState<string>("");
 
@@ -19,11 +18,7 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                 const id = props.submit.id;
                 const response = await axios.get(`${baseUrl}${endpoint}${id}`);
                 const result = response.data;
-                console.log(
-                    `fetch submit: ${id} and display as a popup, title: ${result.title}`
-                );
                 setPopup(result[0].body);
-                console.log(`result: ${result[0].id}`); //result[0].id = id:2
             } catch (err) {
                 console.log(err);
             }
