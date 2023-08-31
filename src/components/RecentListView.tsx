@@ -7,9 +7,22 @@ export interface DataViewProps {
     submit: DataProps;
 }
 
+interface CommentProps {
+    id?: number;
+    pasteBinId?: number;
+    comment: string;
+}
+
+interface CommentViewProps {
+    comment: CommentProps;
+}
+
 export function DispleyRecentListView(props: DataViewProps): JSX.Element {
     const [popupButton, setpopupButton] = useState<boolean>(false);
     const [popup, setPopup] = useState<string>("");
+    const [viewButton, setViewButton] = useState<boolean>(false);
+    //useState string is temp, hard coded at the moment
+    const [showAllComments, setShowAllComments] = useState<string>("");
 
     function handlePopupClick() {
         setpopupButton(!popupButton);
@@ -24,6 +37,27 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
             }
         };
         getPopupInfo("/pastes/");
+    }
+
+    function handleViewClick() {
+        setViewButton(!viewButton);
+        const getComments = async (endpoint: string) => {
+            try {
+                const pasteId = props.submit.id;
+                const response = await axios.get(
+                    `${baseUrl}/pastes/${pasteId}/${endpoint}`
+                );
+                const result = response.data;
+                console.log(result[0].comment + "comment is fetched");
+                //each comment is temp, hard coded at the moment
+                const eachComment = result[0].comment;
+                console.log(eachComment);
+                setShowAllComments(eachComment);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getComments("comments");
     }
 
     return (
@@ -47,6 +81,23 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                         <pre>
                             <code>{popup}</code>
                         </pre>
+                        <div className="view-comment">
+                            <button onClick={handleViewClick}>
+                                View comments
+                            </button>
+                            {viewButton === true ? (
+                                <div>
+                                    Comments:
+                                    {/* current state is temporary  */}
+                                    {showAllComments}
+                                    {/* {showAllComments.map(
+                                        (e) => e.comment.comment
+                                    )} */}
+                                </div>
+                            ) : (
+                                <div></div>
+                            )}
+                        </div>
                     </div>
                 ) : (
                     <p> </p>
