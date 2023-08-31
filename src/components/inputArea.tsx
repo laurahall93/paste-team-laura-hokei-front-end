@@ -18,9 +18,7 @@ export function InputArea({
     setInputTitle,
     inputBody,
     setInputBody,
-}: // newSubmit,
-// setNewSubmit,
-SubmitStateprops): JSX.Element {
+}: SubmitStateprops): JSX.Element {
     return (
         <div>
             <h2>Title: </h2>
