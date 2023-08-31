@@ -1,3 +1,38 @@
 html {
-    background: #f8f8f8;
+    font-family: sans-serif;
+    font-size: 18px;
+    background-color: #aac6c4;
+}
+.header {
+    text-align: center;
+    font-size: 1.5rem;
+    background-color: #558ba5;
+    margin: 0;
+    color: #f1f1f1;
+}
+.footer {
+    background-color: #558ba5;
+    margin: 0;
+    color: #f1f1f1;
+    text-align: center;
+}
+.input-area {
+    display: inline-block;
+    margin-top: 15px;
+}
+.recent-submits {
+    /* border: 1px solid red; */
+    display: grid;
+    grid-column: 100px 100px;
+    grid-template-areas: "**,recent-submit-list popup";
+}
+.recent-submit-list {
+    display: grid;
+    border: 1px solid black;
+    grid-area: recent-submit-list;
+}
+.popup {
+    border: 1px solid black;
+    display: grid;
+    grid-area: popup;
 }
