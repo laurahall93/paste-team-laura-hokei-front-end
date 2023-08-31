@@ -18,8 +18,6 @@ function App(): JSX.Element {
             const reponse = await axios.get(`${baseUrl}${endpoint}`);
             const submits = reponse.data;
             setRecentSubmitList(submits);
-            console.log(submits);
-            console.log("fetched all recentSubmits");
         } catch (err) {
             console.log(err);
         }
@@ -32,11 +30,9 @@ function App(): JSX.Element {
 
     function handleSubmit() {
         if (inputTitle.length === 0 || inputBody.length === 0) {
-            console.error("Title and Body cant be empty.");
+            alert("Title and Body cant be empty.");
         } else {
             setNewSubmit({ title: inputTitle, body: inputBody });
-
-            console.log(newSubmit?.title);
             addNewSubmit("/pastes");
         }
     }
