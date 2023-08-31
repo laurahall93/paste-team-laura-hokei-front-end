@@ -1,8 +1,9 @@
 export default function Footer(): JSX.Element {
     return (
-        <footer>
+        <footer className="footer">
             Check out our{" "}
             <a
+                className="link"
                 href="https://github.com/laurahall93/paste-team-laura-hokei-front-end"
                 target="_blank"
                 rel="noreferrer"
@@ -11,6 +12,7 @@ export default function Footer(): JSX.Element {
             </a>{" "}
             repo and our{" "}
             <a
+                className="link"
                 href="https://github.com/laurahall93/paste-team-laura-hokei-back-end"
                 target="_blank"
                 rel="noreferrer"

@@ -28,7 +28,7 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
 
     return (
         <div>
-            <div>
+            <div className="recent-submit-list">
                 <h3>Title: {props.submit.title}</h3>
                 <h4>
                     Summary :{" "}
@@ -42,7 +42,7 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
             </div>
             <div>
                 {popupButton === true ? (
-                    <div>
+                    <div className="popup">
                         Full summary:{" "}
                         <pre>
                             <code>{popup}</code>

@@ -64,7 +64,7 @@ function App(): JSX.Element {
                     setNewSubmit={setNewSubmit}
                 />
                 <button onClick={handleSubmit}>Submit</button>
-                <div>
+                <div className="recent-submits">
                     <h2>Recent Submits: </h2>
                     {recentSubmitList.map((e) => (
                         <DispleyRecentListView key={e.id} submit={e} />
