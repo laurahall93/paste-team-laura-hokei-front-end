@@ -7,25 +7,23 @@ export interface DataViewProps {
     submit: DataProps;
 }
 
-// interface CommentProps {
-//     id?: number;
-//     pasteBinId?: number;
-//     comment: string;
-// }
-
-// interface CommentViewProps {
-//     comment: CommentProps;
-// }
+interface CommentProps {
+    id?: number;
+    pasteBinId?: number;
+    comment: string;
+}
 
 export function DispleyRecentListView(props: DataViewProps): JSX.Element {
     const [popupButton, setpopupButton] = useState<boolean>(false);
     const [popup, setPopup] = useState<string>("");
     const [viewButton, setViewButton] = useState<boolean>(false);
-    //useState string is temp, hard coded at the moment
-    const [showAllComments, setShowAllComments] = useState<string>("");
+    const [showAllComments, setShowAllComments] = useState<CommentProps[]>([]);
 
     function handlePopupClick() {
         setpopupButton(!popupButton);
+        if (popupButton === false) {
+            setViewButton(false);
+        }
         const getPopupInfo = async (endpoint: string) => {
             try {
                 const id = props.submit.id;
@@ -48,11 +46,7 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                     `${baseUrl}/pastes/${pasteId}/${endpoint}`
                 );
                 const result = response.data;
-                console.log(result[0].comment + "comment is fetched");
-                //each comment is temp, hard coded at the moment
-                const eachComment = result[0].comment;
-                console.log(eachComment);
-                setShowAllComments(eachComment);
+                setShowAllComments(result);
             } catch (err) {
                 console.log(err);
             }
@@ -74,34 +68,25 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                     </button>
                 </h4>
             </div>
+            {popupButton && (
+                <div className="popup">
+                    <h3>Full summary: </h3>
+                    <pre>
+                        <code>{popup}</code>
+                    </pre>
+                    <button onClick={handleViewClick}>View comments</button>
+                </div>
+            )}
 
-            <div className="popup">
-                {popupButton === true ? (
-                    <div>
-                        <h3>Full summary: </h3>
-                        <pre>
-                            <code>{popup}</code>
-                        </pre>
-                        <button onClick={handleViewClick}>View comments</button>
-                    </div>
-                ) : (
-                    <div></div>
-                )}
-            </div>
-            <div className="view-comment">
-                {popupButton === true && viewButton === true ? (
-                    <div>
-                        <h3>Comments: </h3>
-                        {/* current state is temporary  */}
-                        {showAllComments}
-                        {/* {showAllComments.map(
-                            (e) => e.comment.comment
-                        )} */}
-                    </div>
-                ) : (
-                    <div></div>
-                )}
-            </div>
+            {popupButton && viewButton && (
+                <div className="view-comment">
+                    <h3>Comments: </h3>
+                    {showAllComments.map((e) => {
+                        return <p key={e.id}>{e.comment}</p>;
+                    })}
+                </div>
+            )}
+
             <hr className="breakline"></hr>
         </div>
     );

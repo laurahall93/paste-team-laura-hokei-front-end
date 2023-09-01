@@ -25,12 +25,10 @@ body {
 }
 
 .submit-area-title {
-    /* border: 1px solid  orange; */
     display: inline-block;
     font-size: 1.5rem;
 }
 .submit-area-title-input {
-    /* border: 1px solid yellow; */
     display: inline-block;
     margin-top: 24px;
     margin-left: 84px;
@@ -44,7 +42,6 @@ body {
     border: 1px solid #30373e;
 }
 .submit-area-body {
-    /* border: 1px solid yellow; */
     display: inline-block;
     font-size: 1.5rem;
 }
@@ -76,17 +73,15 @@ body {
 }
 
 .recent-submits-list {
-    /* border: 1px solid red; */
     background-color: #d9d9d9;
     border-radius: 16px;
     margin-left: auto;
     margin-right: auto;
-    min-width: 9dvh;
+    min-width: 900px;
     width: 80%;
 }
 
 .list-title {
-    /* border: 1px solid yellow; */
     display: block;
     font-size: 1.5rem;
     margin: 16px;
@@ -94,19 +89,16 @@ body {
 }
 
 .all-submits {
-    /* border: 1px solid orange; */
     background-color: #ebebeb;
     border-radius: 16px;
     padding: 8px;
 }
 
 .submit {
-    /* border: 1px solid white; */
     margin-left: 0;
 }
 
 .recent-submit-content {
-    /* border: 1px solid blue; */
     display: inline-block;
     margin-top: 8px;
     margin-left: 5%;
@@ -115,27 +107,25 @@ body {
 }
 
 .popup {
-    /* border: 1px solid black; */
     display: inline-block;
     margin-top: 8px;
     margin-left: 5%;
     padding: 8px;
     vertical-align: top;
-
-    /* background-color: #d9d9d9;
+    background-color: #d9d9d9;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px #949393a7; */
+    box-shadow: 5px 5px 5px #949393a7;
 }
 
 .view-comment {
-    /* border: 1px solid orange; */
     display: block;
     padding-left: 8px;
     margin-top: 8px;
     margin-left: 5%;
-    /* background-color: #d9d9d9;
+    width: 90%;
+    background-color: #d9d9d9;
     border-radius: 8px;
-    box-shadow: 5px 5px 5px #949393a7; */
+    box-shadow: 5px 5px 5px #949393a7;
 }
 
 .breakline {
