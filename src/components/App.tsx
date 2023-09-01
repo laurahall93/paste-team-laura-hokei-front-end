@@ -49,26 +49,34 @@ function App(): JSX.Element {
             console.log(err);
         }
         fetchAllSubmit("/pastes");
+        setInputTitle("");
+        setInputBody("");
     };
 
     return (
         <div className="App">
             <Header />
             <div>
-                <InputArea
-                    inputTitle={inputTitle}
-                    setInputTitle={setInputTitle}
-                    inputBody={inputBody}
-                    setInputBody={setInputBody}
-                    newSubmit={newSubmit}
-                    setNewSubmit={setNewSubmit}
-                />
-                <button onClick={handleSubmit}>Submit</button>
-                <div className="recent-submits">
-                    <h2>Recent Submits: </h2>
-                    {recentSubmitList.map((e) => (
-                        <DispleyRecentListView key={e.id} submit={e} />
-                    ))}
+                <div className="input-area">
+                    <InputArea
+                        inputTitle={inputTitle}
+                        setInputTitle={setInputTitle}
+                        inputBody={inputBody}
+                        setInputBody={setInputBody}
+                        newSubmit={newSubmit}
+                        setNewSubmit={setNewSubmit}
+                    />
+                    <button className="submit-button" onClick={handleSubmit}>
+                        Submit
+                    </button>
+                </div>
+                <div className="recent-submits-list">
+                    <h2 className="list-title">Recent Submits: </h2>
+                    <div className="all-submits">
+                        {recentSubmitList.map((e) => (
+                            <DispleyRecentListView key={e.id} submit={e} />
+                        ))}
+                    </div>
                 </div>
             </div>
             <Footer />
