@@ -58,6 +58,18 @@ body {
     min-width: 640px;
 }
 
+.comment-area-body-textarea {
+    background-color: hsl(33, 56%, 94%);
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 16px;
+    margin-top: 24px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #30373e;
+    font-size: 1rem;
+    min-width: 640px;
+}
 .submit-button {
     border: 1px solid #30373e;
     display: inline-block;
@@ -70,6 +82,34 @@ body {
     margin-right: 50%;
     font-size: 1rem;
     background-color: #d9d9d9;
+}
+.save-button {
+    color: whitesmoke;
+    border: 1px solid #30373e;
+    display: inline-block;
+    width: 160px;
+    height: 24px;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 60%;
+    font-size: 1rem;
+    background-color: #4caf50;
+}
+
+.add-button {
+    color: whitesmoke;
+    border: 1px solid #30373e;
+    display: inline-block;
+    width: 160px;
+    height: 24px;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    margin-right: 50%;
+    margin-left: 2%;
+    font-size: 1rem;
+    background-color: #008cba;
 }
 
 .recent-submits-list {

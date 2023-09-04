@@ -21,6 +21,7 @@ function AddComment(props: AddCommentProps): JSX.Element {
     return (
         <div>
             <textarea
+                className="comment-area-body-textarea"
                 placeholder="Add your comment here..."
                 rows={8}
                 cols={60}
@@ -30,7 +31,9 @@ function AddComment(props: AddCommentProps): JSX.Element {
                     props.setNewComment(event.target.value);
                 }}
             ></textarea>
-            <button onClick={props.handleSaveComment}>Save comment</button>
+            <button className="save-button" onClick={props.handleSaveComment}>
+                Save comment
+            </button>
         </div>
     );
 }
@@ -132,7 +135,9 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                     {showAllComments.map((e) => {
                         return <p key={e.id}>{e.comment}</p>;
                     })}
-                    <button onClick={handleAddComment}>Add Comment</button>
+                    <button className="add-button" onClick={handleAddComment}>
+                        Add Comment
+                    </button>
                     {addNewCommentButton && (
                         <AddComment
                             newComment={newComment}
