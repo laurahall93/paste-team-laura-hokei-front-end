@@ -12,7 +12,28 @@ interface CommentProps {
     pasteBinId?: number;
     comment: string;
 }
-
+interface AddCommentProps {
+    newComment: string;
+    setNewComment: React.Dispatch<React.SetStateAction<string>>;
+    handleSaveComment: () => void;
+}
+function AddComment(props: AddCommentProps): JSX.Element {
+    return (
+        <div>
+            <textarea
+                placeholder="Add your comment here..."
+                rows={8}
+                cols={60}
+                value={props.newComment}
+                onChange={(event) => {
+                    event.preventDefault();
+                    props.setNewComment(event.target.value);
+                }}
+            ></textarea>
+            <button onClick={props.handleSaveComment}>Save comment</button>
+        </div>
+    );
+}
 export function DispleyRecentListView(props: DataViewProps): JSX.Element {
     const [popupButton, setpopupButton] = useState<boolean>(false);
     const [popup, setPopup] = useState<string>("");
@@ -20,7 +41,7 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
     const [showAllComments, setShowAllComments] = useState<CommentProps[]>([]);
     const [addNewCommentButton, setAddNewCommentButton] =
         useState<boolean>(false);
-    const [addNewComment, setAddNewComment] = useState("");
+    const [newComment, setNewComment] = useState("");
 
     function handlePopupClick() {
         setpopupButton(!popupButton);
@@ -59,42 +80,26 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
 
     function handleAddComment() {
         setAddNewCommentButton(!addNewCommentButton);
-        TestAddComment();
-    }
-
-    function TestAddComment(): JSX.Element {
-        return (
-            <div>
-                <textarea
-                    placeholder="Add your comment here..."
-                    rows={8}
-                    cols={60}
-                    value={addNewComment}
-                    onChange={(event) => {
-                        setAddNewComment(event.target.value);
-                    }}
-                ></textarea>
-                <button onClick={handleSaveComment}>Save comment</button>
-            </div>
-        );
     }
 
     function handleSaveComment() {
-        console.log("Save button is clicked");
         const addNewComment = async (endpoint: string) => {
             try {
                 const id = props.submit.id;
                 const response = await axios.post(
                     `${baseUrl}/pastes/${id}/${endpoint}`,
-                    { comment: `${addNewComment}` }
+                    { comment: newComment }
                 );
                 const result = response.data;
-                setShowAllComments((prev) => [...prev, result]);
+                if (result.length > 0) {
+                    setShowAllComments((prev) => [...prev, result[0]]);
+                }
             } catch (err) {
                 console.log(err);
             }
         };
         addNewComment("comments");
+        setNewComment("");
     }
 
     return (
@@ -128,7 +133,13 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                         return <p key={e.id}>{e.comment}</p>;
                     })}
                     <button onClick={handleAddComment}>Add Comment</button>
-                    {addNewCommentButton && <TestAddComment />}
+                    {addNewCommentButton && (
+                        <AddComment
+                            newComment={newComment}
+                            setNewComment={setNewComment}
+                            handleSaveComment={handleSaveComment}
+                        />
+                    )}
                 </div>
             )}
 
