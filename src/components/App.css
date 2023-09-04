@@ -1,3 +1,150 @@
-html {
-    background: #f8f8f8;
+body {
+    font-family: sans-serif;
+    font-size: 18px;
+    color: #30373e;
+    background-color: #aac6c4;
+}
+.header {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 5rem;
+    background-color: #558ba5;
+    margin-top: 0;
+    color: #f1f1f1;
+}
+.input-area {
+    border: 1px solid #30373e;
+    background-color: #ebebeb;
+    border-radius: 16px;
+    min-width: 900px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.submit-area-title {
+    display: inline-block;
+    font-size: 1.5rem;
+}
+.submit-area-title-input {
+    display: inline-block;
+    margin-top: 24px;
+    margin-left: 84px;
+    height: 16px;
+    min-width: 640px;
+    font-size: 1rem;
+    padding: 8px;
+    vertical-align: top;
+    background: none;
+    border-radius: 8px;
+    border: 1px solid #30373e;
+}
+.submit-area-body {
+    display: inline-block;
+    font-size: 1.5rem;
+}
+.submit-area-body-textarea {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 16px;
+    margin-top: 24px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #30373e;
+    font-size: 1rem;
+    background: none;
+    min-width: 640px;
+}
+
+.submit-button {
+    border: 1px solid #30373e;
+    display: inline-block;
+    width: 160px;
+    height: 24px;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 50%;
+    margin-right: 50%;
+    font-size: 1rem;
+    background-color: #d9d9d9;
+}
+
+.recent-submits-list {
+    background-color: #d9d9d9;
+    border-radius: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 900px;
+    width: 80%;
+}
+
+.list-title {
+    display: block;
+    font-size: 1.5rem;
+    margin: 16px;
+    padding-top: 16px;
+}
+
+.all-submits {
+    background-color: #ebebeb;
+    border-radius: 16px;
+    padding: 8px;
+}
+
+.submit {
+    margin-left: 0;
+}
+
+.recent-submit-content {
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 5%;
+    padding: 8px;
+    vertical-align: top;
+}
+
+.popup {
+    display: inline-block;
+    margin-top: 8px;
+    margin-left: 5%;
+    padding: 8px;
+    vertical-align: top;
+    background-color: #d9d9d9;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px #949393a7;
+}
+
+.view-comment {
+    display: block;
+    padding-left: 8px;
+    margin-top: 8px;
+    margin-left: 5%;
+    width: 90%;
+    background-color: #d9d9d9;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px #949393a7;
+}
+
+.breakline {
+    border: 1px solid #30373e;
+    width: 90%;
+    margin-top: 0%;
+}
+
+.footer {
+    background-color: #558ba5;
+    margin-top: 8px;
+    color: #f1f1f1;
+    text-align: center;
+    line-height: 5rem;
+}
+.link {
+    color: #f1f1f1;
+}
+
+button:hover {
+    cursor: pointer;
 }
