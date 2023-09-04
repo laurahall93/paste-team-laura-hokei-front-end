@@ -18,6 +18,9 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
     const [popup, setPopup] = useState<string>("");
     const [viewButton, setViewButton] = useState<boolean>(false);
     const [showAllComments, setShowAllComments] = useState<CommentProps[]>([]);
+    const [addNewCommentButton, setAddNewCommentButton] =
+        useState<boolean>(false);
+    const [addNewComment, setAddNewComment] = useState("");
 
     function handlePopupClick() {
         setpopupButton(!popupButton);
@@ -54,6 +57,46 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
         getComments("comments");
     }
 
+    function handleAddComment() {
+        setAddNewCommentButton(!addNewCommentButton);
+        TestAddComment();
+    }
+
+    function TestAddComment(): JSX.Element {
+        return (
+            <div>
+                <textarea
+                    placeholder="Add your comment here..."
+                    rows={8}
+                    cols={60}
+                    value={addNewComment}
+                    onChange={(event) => {
+                        setAddNewComment(event.target.value);
+                    }}
+                ></textarea>
+                <button onClick={handleSaveComment}>Save comment</button>
+            </div>
+        );
+    }
+
+    function handleSaveComment() {
+        console.log("Save button is clicked");
+        const addNewComment = async (endpoint: string) => {
+            try {
+                const id = props.submit.id;
+                const response = await axios.post(
+                    `${baseUrl}/pastes/${id}/${endpoint}`,
+                    { comment: `${addNewComment}` }
+                );
+                const result = response.data;
+                setShowAllComments((prev) => [...prev, result]);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        addNewComment("comments");
+    }
+
     return (
         <div className="submit">
             <div className="recent-submit-content">
@@ -84,6 +127,8 @@ export function DispleyRecentListView(props: DataViewProps): JSX.Element {
                     {showAllComments.map((e) => {
                         return <p key={e.id}>{e.comment}</p>;
                     })}
+                    <button onClick={handleAddComment}>Add Comment</button>
+                    {addNewCommentButton && <TestAddComment />}
                 </div>
             )}
 
